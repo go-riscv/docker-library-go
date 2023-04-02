@@ -39,6 +39,8 @@ jobs:
         with:
           context: 1.20/sid
           platforms: linux/riscv64
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
           push: true
           tags: |
             ${{ env.IMAGE }}:latest
