@@ -10,7 +10,7 @@ FROM alpine:{{ alpine_version }}
 
 RUN apk add --no-cache ca-certificates
 {{ ) else ( -}}
-FROM buildpack-deps:{{ env.variant }}-scm
+FROM riscv64/buildpack-deps:{{ env.variant }}-scm
 
 # install cgo-related dependencies
 RUN set -eux; \
@@ -40,6 +40,7 @@ ENV GOLANG_VERSION {{ .version }}
 				i386: "x86",
 				ppc64le: "ppc64le",
 				s390x: "s390x",
+				riscv64: "riscv64",
 			}
 		else
 			{
@@ -51,6 +52,7 @@ ENV GOLANG_VERSION {{ .version }}
 				mips64le: "mips64el",
 				ppc64le: "ppc64el",
 				s390x: "s390x",
+				riscv64: "riscv64",
 			}
 		end
 -}}
@@ -114,6 +116,8 @@ RUN set -eux; \
 	gpg --batch --keyserver keyserver.ubuntu.com --recv-keys 'EB4C 1BFD 4F04 2F6D DDCC  EC91 7721 F63B D38B 4796'; \
 # let's also fetch the specific subkey of that key explicitly that we expect "go.tgz.asc" to be signed by, just to make sure we definitely have it
 	gpg --batch --keyserver keyserver.ubuntu.com --recv-keys '2F52 8D36 D67B 69ED F998  D857 78BD 6547 3CB3 BD13'; \
+# go-riscv signing key
+	gpg --batch --keyserver keyserver.ubuntu.com --recv-keys '943040B9817AC4C7'; \
 	gpg --batch --verify go.tgz.asc go.tgz; \
 	gpgconf --kill all; \
 	rm -rf "$GNUPGHOME" go.tgz.asc; \

@@ -3,16 +3,7 @@ set -Eeuo pipefail
 
 # see https://golang.org/dl/
 potentiallySupportedArches=(
-	amd64
-	arm32v5
-	arm32v6
-	arm32v7
-	arm64v8
-	i386
-	mips64le
-	ppc64le
-	s390x
-	windows-amd64
+	riscv64
 
 	# special case (fallback)
 	src

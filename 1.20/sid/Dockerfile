@@ -4,7 +4,7 @@
 # PLEASE DO NOT EDIT IT DIRECTLY.
 #
 
-FROM buildpack-deps:bullseye-scm
+FROM riscv64/buildpack-deps:sid-scm
 
 # install cgo-related dependencies
 RUN set -eux; \
@@ -26,35 +26,9 @@ RUN set -eux; \
 	arch="$(dpkg --print-architecture)"; arch="${arch##*-}"; \
 	url=; \
 	case "$arch" in \
-		'amd64') \
-			url='https://dl.google.com/go/go1.20.2.linux-amd64.tar.gz'; \
-			sha256='4eaea32f59cde4dc635fbc42161031d13e1c780b87097f4b4234cfce671f1768'; \
-			;; \
-		'armel') \
-			export GOARCH='arm' GOARM='5' GOOS='linux'; \
-			;; \
-		'armhf') \
-			url='https://dl.google.com/go/go1.20.2.linux-armv6l.tar.gz'; \
-			sha256='d79d56bafd6b52b8d8cbe3f8e967caaac5383a23d7a4fa9ac0e89778cd16a076'; \
-			;; \
-		'arm64') \
-			url='https://dl.google.com/go/go1.20.2.linux-arm64.tar.gz'; \
-			sha256='78d632915bb75e9a6356a47a42625fd1a785c83a64a643fedd8f61e31b1b3bef'; \
-			;; \
-		'i386') \
-			url='https://dl.google.com/go/go1.20.2.linux-386.tar.gz'; \
-			sha256='ee240ed33ae57504c41f04c12236aeaa17fbeb6ea9fcd096cd9dc7a89d10d4db'; \
-			;; \
-		'mips64el') \
-			export GOARCH='mips64le' GOOS='linux'; \
-			;; \
-		'ppc64el') \
-			url='https://dl.google.com/go/go1.20.2.linux-ppc64le.tar.gz'; \
-			sha256='850564ddb760cb703db63bf20182dc4407abd2ff090a95fa66d6634d172fd095'; \
-			;; \
-		's390x') \
-			url='https://dl.google.com/go/go1.20.2.linux-s390x.tar.gz'; \
-			sha256='8da24c5c4205fe8115f594237e5db7bcb1d23df67bc1fa9a999954b1976896e8'; \
+		'riscv64') \
+			url='https://github.com/go-riscv/go/releases/download/build-230402.1/go1.20.2.linux-riscv64.tar.gz'; \
+			sha256='03203234a4701720ef41a22e902087fabf7eda1c755c2ee51be710ad4a1e8875'; \
 			;; \
 		*) echo >&2 "error: unsupported architecture '$arch' (likely packaging update needed)"; exit 1 ;; \
 	esac; \
@@ -79,6 +53,8 @@ RUN set -eux; \
 	gpg --batch --keyserver keyserver.ubuntu.com --recv-keys 'EB4C 1BFD 4F04 2F6D DDCC  EC91 7721 F63B D38B 4796'; \
 # let's also fetch the specific subkey of that key explicitly that we expect "go.tgz.asc" to be signed by, just to make sure we definitely have it
 	gpg --batch --keyserver keyserver.ubuntu.com --recv-keys '2F52 8D36 D67B 69ED F998  D857 78BD 6547 3CB3 BD13'; \
+# go-riscv signing key
+	gpg --batch --keyserver keyserver.ubuntu.com --recv-keys '943040B9817AC4C7'; \
 	gpg --batch --verify go.tgz.asc go.tgz; \
 	gpgconf --kill all; \
 	rm -rf "$GNUPGHOME" go.tgz.asc; \
