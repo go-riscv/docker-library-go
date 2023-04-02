@@ -1,8 +1,9 @@
 name: release
 
 on:
+  workflow_dispatch:
   push:
-    branches: [master]
+    tags: ["v*"]
 
 permissions:
   contents: write
@@ -19,6 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
       - uses: sigstore/cosign-installer@v3.0.1
       - uses: anchore/sbom-action/download-syft@v0
       - uses: arduino/setup-task@v1
@@ -33,8 +35,10 @@ jobs:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Build and push
         uses: docker/build-push-action@v4
+        if: github.repository == 'octo-org/octo-repo-prod'
         with:
           context: 1.20/sid
           platforms: linux/riscv64
