@@ -38,7 +38,6 @@ jobs:
 
       - name: Build and push
         uses: docker/build-push-action@v4
-        if: github.repository == 'octo-org/octo-repo-prod'
         with:
           context: 1.20/sid
           platforms: linux/riscv64
