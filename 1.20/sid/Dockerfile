@@ -20,15 +20,15 @@ RUN set -eux; \
 
 ENV PATH /usr/local/go/bin:$PATH
 
-ENV GOLANG_VERSION 1.20.2
+ENV GOLANG_VERSION 1.20.3
 
 RUN set -eux; \
 	arch="$(dpkg --print-architecture)"; arch="${arch##*-}"; \
 	url=; \
 	case "$arch" in \
 		'riscv64') \
-			url='https://github.com/go-riscv/go/releases/download/build-230402.1/go1.20.2.linux-riscv64.tar.gz'; \
-			sha256='03203234a4701720ef41a22e902087fabf7eda1c755c2ee51be710ad4a1e8875'; \
+			url='https://github.com/go-riscv/go/releases/download/build-230412.0/go1.20.3.linux-riscv64.tar.gz'; \
+			sha256='cc04195c17885aab1264df24d09e417854bebbc6e567e422cdce1eb6399053bc'; \
 			;; \
 		*) echo >&2 "error: unsupported architecture '$arch' (likely packaging update needed)"; exit 1 ;; \
 	esac; \
@@ -36,8 +36,8 @@ RUN set -eux; \
 	if [ -z "$url" ]; then \
 # https://github.com/golang/go/issues/38536#issuecomment-616897960
 		build=1; \
-		url='https://dl.google.com/go/go1.20.2.src.tar.gz'; \
-		sha256='4d0e2850d197b4ddad3bdb0196300179d095bb3aefd4dfbc3b36702c3728f8ab'; \
+		url='https://dl.google.com/go/go1.20.3.src.tar.gz'; \
+		sha256='e447b498cde50215c4f7619e5124b0fc4e25fb5d16ea47271c47f278e7aa763a'; \
 		echo >&2; \
 		echo >&2 "warning: current architecture ($arch) does not have a compatible Go binary release; will be building from source"; \
 		echo >&2; \
