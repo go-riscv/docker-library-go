@@ -6,19 +6,19 @@
           "GOARCH": "riscv64",
           "GOOS": "linux"
         },
-        "sha256": "490a0a17c16d93b3b18451b1c47b77c5a726df19a6520df9e221a6f70d0a1d06",
+        "sha256": "b85a931b7059f4312bc07beff9addc69cd0ab6d8e6d26d27660bda19d7441a26",
         "supported": true,
-        "url": "https://github.com/go-riscv/go/releases/download/build-230502.0/go1.20.4.linux-riscv64.tar.gz"
+        "url": "https://github.com/go-riscv/go/releases/download/build-230613.0/go1.20.5.linux-riscv64.tar.gz"
       },
       "src": {
-        "sha256": "9f34ace128764b7a3a4b238b805856cc1b2184304df9e5690825b0710f4202d6",
+        "sha256": "9a15c133ba2cfafe79652f4815b62e7cfc267f68df1b9454c6ab2a3ca8b96a88",
         "supported": true,
-        "url": "https://dl.google.com/go/go1.20.4.src.tar.gz"
+        "url": "https://dl.google.com/go/go1.20.5.src.tar.gz"
       }
     },
     "variants": [
       "sid"
     ],
-    "version": "1.20.4"
+    "version": "1.20.5"
   }
 }
