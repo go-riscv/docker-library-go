@@ -1,24 +1,24 @@
 {
-  "1.20": {
+  "1.21": {
     "arches": {
       "riscv64": {
         "env": {
           "GOARCH": "riscv64",
           "GOOS": "linux"
         },
-        "sha256": "b85a931b7059f4312bc07beff9addc69cd0ab6d8e6d26d27660bda19d7441a26",
+        "sha256": "87b21c06573617842ca9e00b954bc9f534066736a0778eae594ac54b45a9e8b7",
         "supported": true,
-        "url": "https://github.com/go-riscv/go/releases/download/build-230613.0/go1.20.5.linux-riscv64.tar.gz"
+        "url": "https://go.dev/dl/go1.21.0.linux-riscv64.tar.gz"
       },
       "src": {
         "sha256": "9a15c133ba2cfafe79652f4815b62e7cfc267f68df1b9454c6ab2a3ca8b96a88",
         "supported": true,
-        "url": "https://dl.google.com/go/go1.20.5.src.tar.gz"
+        "url": "https://dl.google.com/go/go1.21.0.src.tar.gz"
       }
     },
     "variants": [
       "sid"
     ],
-    "version": "1.20.5"
+    "version": "1.21.0"
   }
 }

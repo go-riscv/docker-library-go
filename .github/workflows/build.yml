@@ -27,7 +27,7 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
-          context: 1.20/sid
+          context: 1.21/sid
           platforms: linux/riscv64
           cache-from: type=gha
           cache-to: type=gha,mode=max
