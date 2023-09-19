@@ -6,19 +6,19 @@
           "GOARCH": "riscv64",
           "GOOS": "linux"
         },
-        "sha256": "87b21c06573617842ca9e00b954bc9f534066736a0778eae594ac54b45a9e8b7",
+        "sha256": "fac64ed26e003f49f1d77f6d2c4cf951422aecbce12232d9ec1bf4585fc44ee1",
         "supported": true,
-        "url": "https://go.dev/dl/go1.21.0.linux-riscv64.tar.gz"
+        "url": "https://go.dev/dl/go1.21.1.linux-riscv64.tar.gz"
       },
       "src": {
-        "sha256": "9a15c133ba2cfafe79652f4815b62e7cfc267f68df1b9454c6ab2a3ca8b96a88",
+        "sha256": "bfa36bf75e9a1e9cbbdb9abcf9d1707e479bd3a07880a8ae3564caee5711cb99",
         "supported": true,
-        "url": "https://dl.google.com/go/go1.21.0.src.tar.gz"
+        "url": "https://dl.google.com/go/go1.21.1.src.tar.gz"
       }
     },
     "variants": [
       "sid"
     ],
-    "version": "1.21.0"
+    "version": "1.21.1"
   }
 }

@@ -48,5 +48,5 @@ jobs:
             ${{ env.IMAGE }}:latest
             ${{ env.IMAGE }}:sid
             ${{ env.IMAGE }}:1.21
-            ${{ env.IMAGE }}:1.21.0
-            ${{ env.IMAGE }}:1.21.0-sid
+            ${{ env.IMAGE }}:1.21.1
+            ${{ env.IMAGE }}:1.21.1-sid
